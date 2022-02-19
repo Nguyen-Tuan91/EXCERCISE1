@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle } from 'reactstrap';
 
-class Dishdetail extends React.Component {
+class Dishdetail extends Component {
     renderDish(dish) {
         return (
         <div className="col-12 col-md-5 m-1">
