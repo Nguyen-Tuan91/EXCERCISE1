@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-import { Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle } from 'reactstrap';
+import { Card, CardImg, CardText, CardBody, CardTitle } from 'reactstrap';
 
 class Dishdetail extends Component {
+   
     renderDish(dish) {
         return (
         <div className="col-12 col-md-5 m-1">
@@ -62,8 +62,7 @@ class Dishdetail extends Component {
             return (
                 <div></div>
             );
-        }
-        
+        } 
     }
 }
 export default Dishdetail;
