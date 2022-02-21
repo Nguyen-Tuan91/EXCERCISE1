@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, CardImg, CardOverlay, CardTitle } from 'reactstrap';
+import { Card, CardImg, CardBody, CardTitle } from 'reactstrap';
 import Staffdetail from './StaffdetailComponent';
 
 class Staff extends Component {
@@ -16,7 +16,12 @@ class Staff extends Component {
     renderStaff(staff) {
         if(staff!=null) {
             return (
-                <Staffdetail staff={staff} />
+                <Card>
+                    <CardImg top src={staff.image} alt={staff.name} />
+                <CardBody>
+                    <CardTitle>{staff.name}</CardTitle>
+                </CardBody>
+                </Card>
             )
         }
         else {
@@ -31,10 +36,8 @@ class Staff extends Component {
             return(
                 <div className="col-lg-4 col-md-6">
                 <Card key={staff.id} onClick={() => this.onStaffselect(staff)}>
-                    <CardImg width="100%" src={staff.image} alt={staff.name} />
-                <CardOverlay>
+                    <CardImg src={staff.image} alt={staff.name} />
                     <CardTitle>{staff.name}</CardTitle>
-                </CardOverlay>
                 </Card>
                 </div>
             );
@@ -44,9 +47,7 @@ class Staff extends Component {
             <div className="row">
                 {staff1}
             </div>
-            <div>
-                {this.renderStaff(this.state.selectedStaff)}
-            </div>
+           <Staffdetail staff={this.state.selectedStaff} />
         </div>
     )
     }
