@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Card, CardImg, CardBody, CardTitle } from 'reactstrap';
 import Staffdetail from './StaffdetailComponent';
 
 class Staff extends Component {
@@ -16,12 +15,7 @@ class Staff extends Component {
     renderStaff(staff) {
         if(staff!=null) {
             return (
-                <Card>
-                    <CardImg top src={staff.image} alt={staff.name} />
-                <CardBody>
-                    <CardTitle>{staff.name}</CardTitle>
-                </CardBody>
-                </Card>
+               <Staffdetail staff={staff} />
             )
         }
         else {
@@ -32,22 +26,26 @@ class Staff extends Component {
     }
 
     render() {
-        const staff1=this.props.staffs.map((staff) => {
+        const staffList=this.props.staffs.map((staff) => {
             return(
                 <div className="col-lg-4 col-md-6">
-                <Card key={staff.id} onClick={() => this.onStaffselect(staff)}>
-                    <CardImg src={staff.image} alt={staff.name} />
-                    <CardTitle>{staff.name}</CardTitle>
-                </Card>
+                <div key={staff.id} onClick={() => this.onStaffselect(staff)}>
+                    <div className='card-name'>
+                    <img className='image-name' src={staff.image} alt={staff.name} />
+                    <h5 className='name'>{staff.name}</h5>
+                </div>
+                </div>
                 </div>
             );
         });
     return(
         <div className="container">
             <div className="row">
-                {staff1}
+                {staffList}
             </div>
-           <Staffdetail staff={this.state.selectedStaff} />
+          <div>
+              {this.renderStaff(this.state.selectedStaff)}
+          </div>
         </div>
     )
     }
