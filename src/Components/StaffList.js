@@ -31,7 +31,7 @@ class Staff extends Component {
                 <div className="col-lg-4 col-md-6">
                 <div key={staff.id} onClick={() => this.onStaffselect(staff)}>
                     <div className='card-name'>
-                    <img className='image-name' src={staff.image} alt={staff.name} />
+                    <img className='image-name' width='100%' src={staff.image} alt={staff.name} />
                     <h5 className='name'>{staff.name}</h5>
                 </div>
                 </div>
