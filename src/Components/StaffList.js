@@ -9,7 +9,7 @@ class Staff extends Component {
     }
 
     onStaffselect(staff) {
-        this.setState({ selectedStaff: staff });
+        this.setState({ selectedStaff: null });
     }
 
     renderStaff(staff) {
