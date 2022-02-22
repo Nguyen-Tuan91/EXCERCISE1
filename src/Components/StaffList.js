@@ -5,7 +5,7 @@ class Staff extends Component {
     constructor(props) {
         super(props);
         this.state={ 
-        selectedStaff: null};
+        selectedStaff: staffs};
     }
 
     onStaffselect(staff) {
