@@ -25,10 +25,10 @@ class Main extends Component {
         <NavbarBrand href="/">Ristorante Con Fusion</NavbarBrand>
       </div>
       </Navbar>
-      <Menu dishes={this.state.dishes} 
+      <Menu dishes={this.state.dish} 
       onClick={(dishId) => this.onDishSelect(dishId)}/>
       <Dishdetail 
-      dish={this.state.dishes.filter((dish) => dish.id===this.state.selectedDish )[0]} />
+      dish={this.state.dish.filter((dish) => dish.id===this.state.selectedDish )[0]} />
     </div>
   );
 }
