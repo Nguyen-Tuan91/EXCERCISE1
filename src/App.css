@@ -58,6 +58,12 @@
   p.card-text {
     font-size: 1.5rem;
   }
+  .col-lg-2.col-md-4.col-6 {
+    margin-bottom: 12px;
+  }
+  .nav-link:hover {
+    color: #fff !important;
+  }
   
   @media screen and (min-width: 768px) and (max-width: 991px) {
     .Header {
