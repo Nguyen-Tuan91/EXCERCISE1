@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, CardImg, CardOverlay, CardTitle } from 'reactstrap';
+import { Card, CardImg, CardTitle } from 'reactstrap';
 import { Link } from 'react-router-dom';
 
     function RenderStaff({staff, onClick}) {
@@ -7,9 +7,9 @@ import { Link } from 'react-router-dom';
             <Card>
                 <Link to={`/staff/${staff.id}`}>
                     <CardImg width="100%" src={staff.image} alt={staff.name} />
-                    <CardOverlay>
+                    <div>
                         <CardTitle>{staff.name}</CardTitle>
-                    </CardOverlay>
+                    </div>
                 </Link>
             </Card>
             
