@@ -19,7 +19,7 @@ class Main extends Component {
     render() {
         const StaffWithId=({match}) => {
             return(
-                <StaffDetail staff={this.state.staffs.find((staff) => staff.id===parseInt(match.params.id))} />
+                <StaffDetail staff={this.state.staffs.find((staff) => staff.id===parseInt(match.params.id,10))} />
             );
         };
     return(
@@ -28,8 +28,8 @@ class Main extends Component {
                 <Switch>
                     <Route exact path="/staff" component={() => <StaffList staffs={this.state.staffs} />} />
                     <Route exact path="/staff" component={() => <StaffWithId staff={this.state.staffs} />} />
-                    <Route exact path="/staff/:id" component={StaffWithId} />
-                    <Route exact path="/department" component={() => <Department departments={this.state.departmets} />} />
+                    <Route path="/staff/:id" component={StaffWithId} />
+                    <Route exact path="/department" component={() => <Department departments={this.state.departments} />} />
                 </Switch>
             <Footer />
         </div>

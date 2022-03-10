@@ -64,4 +64,4 @@ import { Link } from 'react-router-dom'
         else
         return <div></div>
    }
-export default Staffdetail;
+export default StaffDetail;
