@@ -1,12 +1,10 @@
 import React from "react";
-import { Card, CardBody, CardTitle, CardText, CardOverlay } from 'reactstrap';
+import { Card, CardBody, CardTitle, CardText } from 'reactstrap';
 
 function RenderDepartment({department}) {
     return(
         <Card>
-            <CardOverlay>
-                <CardTitle>{department.name}</CardTitle>
-            </CardOverlay>
+                <CardTitle className="n-2">{department.name}</CardTitle>
             <CardBody>
                 <CardText>Số lượng nhân viên: {department.numberOfStaff}</CardText>
             </CardBody>

@@ -4,7 +4,7 @@ import dateFormat from 'dateformat';
 import { Link } from 'react-router-dom'
 
     function RenderStaffdetail({staff}) {
-    if(staff!==null)
+    if(staff !=null)
      return(
          <div className="row">
              <div className="col-lg-4 col-md-3 col-12">
@@ -41,17 +41,17 @@ import { Link } from 'react-router-dom'
    }
 
    const StaffDetail=(props) => {
-       if(props.staff!==null)
+       if(props.staff !=null)
        return(
            <div className="container">
                <div className="row">
                    <Breadcrumb>
-                   <BreadcrumbItem><Link to="/Nhanvien">Nhân Viên</Link></BreadcrumbItem>
+                   <BreadcrumbItem><Link to="/staff">Nhân Viên</Link></BreadcrumbItem>
                    <BreadcrumbItem active>{props.staff.name}</BreadcrumbItem>
                    </Breadcrumb>
                    <div className="col-12">
                        <h3>{props.staff.name}</h3>
-                       <br />
+                       <hr />
                     </div>
                 </div>
                 <div className="row">

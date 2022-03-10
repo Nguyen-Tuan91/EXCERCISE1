@@ -1,15 +1,15 @@
 import React from 'react';
-import { Card, CardImg, CardTitle } from 'reactstrap';
+import { Card, CardImg, CardTitle, CardBody } from 'reactstrap';
 import { Link } from 'react-router-dom';
 
-    function RenderStaff({staff, onClick}) {
+    function RenderStaff({staff}) {
         return(
             <Card>
                 <Link to={`/staff/${staff.id}`}>
                     <CardImg width="100%" src={staff.image} alt={staff.name} />
-                    <div>
+                    <CardBody>
                         <CardTitle>{staff.name}</CardTitle>
-                    </div>
+                    </CardBody>
                 </Link>
             </Card>
             
