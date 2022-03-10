@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import StaffList from '../Components/StaffList';
 import StaffDetail from '../Components/StaffdetailComponent';
 import Department from '../Components/DepartmentComponent';
+import SalaryTable from '../Components/SalaryTableComponent';
 import { STAFFS, DEPARTMENTS} from '../shared/staffs';
 import Footer from '../Components/FooterComponent';
 import Header from '../Components/HeaderComponent';
