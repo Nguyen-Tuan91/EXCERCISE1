@@ -27,10 +27,10 @@ class Main extends Component {
         <div>
             <Header />
                 <Switch>
-                    <Route exact path="/staff" component={() => <StaffList staff={this.state.staffs} />} />
+                    <Route exact path="/staff" component={() => <StaffList staffs={this.state.staffs} />} />
                     <Route path="/staff/:staffId" component={StaffWithId} />
-                    <Route exact path="/department" component={() => <Department department={this.state.departments} />} />
-                    <Route path="/Salary" component={() => <Salary staffList={this.state.staff} />} />
+                    <Route path="/department" component={() => <Department departments={this.state.departments} />} />
+                    <Route path="/salary" component={() => <Salary staffs={this.state.staffs} />} />
                     <Redirect to="/staff" />
                 </Switch>
             <Footer />

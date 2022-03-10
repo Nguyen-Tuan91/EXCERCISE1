@@ -16,7 +16,7 @@ import { Link } from 'react-router-dom';
         );
     }
         const StaffList=(props) => {
-            const stafflist=props.staffs.map((staff) => {
+            const staffList=props.staffs.map((staff) => {
                 return(
                     <div className="col-lg-2 col-md-4 col-6" key={staff.id}>
                     <RenderStaff staff={staff} />
@@ -32,7 +32,7 @@ import { Link } from 'react-router-dom';
                     </div>
                 </div>
                 <div className="row">
-                    {stafflist}
+                    {staffList}
                 </div>
             </div>
         );
