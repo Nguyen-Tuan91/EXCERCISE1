@@ -89,7 +89,7 @@ class Contact extends Component {
                                 <Label htmlFor="lastname" md={2}>Last Name</Label>
                                 <Col md={10}>
                                     <Input type="text" id="lastname" name="lastname"
-                                            placeholde="Last Name"
+                                            placeholder="Last Name"
                                             value={this.state.lastname}
                                             onChange={this.handleInputChange} />
                                 </Col>
@@ -98,7 +98,7 @@ class Contact extends Component {
                                 <Label htmlFor="telnum" md={2}>Contact Tel.</Label>
                                 <Col md={10}>
                                     <Input type="tel" id="telnum" name="telnum"
-                                            placeholde="Tel.number"
+                                            placeholder="Tel.number"
                                             value={this.state.telnum}
                                             onChange={this.handleInputChange} />
                                 </Col>
@@ -107,7 +107,7 @@ class Contact extends Component {
                                 <Label htmlFor="email" md={2}>Email</Label>
                                 <Col md={10}>
                                     <Input type="email" id="email" name="email"
-                                            placeholde="Email"
+                                            placeholder="Email"
                                             value={this.state.email}
                                             onChange={this.handleInputChange} />
                                 </Col>
