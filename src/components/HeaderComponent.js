@@ -103,8 +103,6 @@ class Header extends Component {
                                         innerRef={(input => this.remember=input)} />
                                         Remember me
                                 </Label>
-                                <Input type="text" id="password" name="password"
-                                    inerRef={(input) => this.password=input} />
                             </FormGroup>
                             <Button type="submit" value="submit" color="primary">Login</Button>
                         </Form>
