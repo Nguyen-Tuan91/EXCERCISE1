@@ -17,7 +17,7 @@ class Header extends Component {
 
     render() {
         return(
-            <React.Fragment>
+            <div className="header">
                 <Navbar dark expand="md">
                     <div className="container">
                         <NavbarToggler onClick={() => this.toggleNav()} />
@@ -27,17 +27,17 @@ class Header extends Component {
                     <Collapse isOpen={this.state.isNavOpen} navbar>
                         <Nav navbar>
                             <NavItem>
-                                <NavLink className="nav-link" to="/Nhanvien">
+                                <NavLink className="nav-link" to="/staff">
                                     <span className="fa fa-users fa-lg"></span> Nhân Viên
                                 </NavLink>
                             </NavItem>
                             <NavItem>
-                                <NavLink className="nav-link" to="/Phongban">
+                                <NavLink className="nav-link" to="/department">
                                     <span className="fa fa-id-card-o fa-lg"></span> Phòng Ban
                                 </NavLink>
                             </NavItem>
                             <NavItem>
-                                <NavLink className="nav-link" to="/Bangluong">
+                                <NavLink className="nav-link" to="/salary">
                                     <span className="fa fa-money fa-lg"></span> Bảng Lương
                                 </NavLink>
                             </NavItem>
@@ -45,7 +45,7 @@ class Header extends Component {
                     </Collapse>
                     </div>
                 </Navbar>
-            </React.Fragment>
+            </div>
         );
     }
 }

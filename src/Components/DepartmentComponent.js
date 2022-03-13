@@ -4,8 +4,8 @@ import { Card, CardBody, CardTitle, CardText } from 'reactstrap';
 //Presentation Component
 function RenderDepartment({department}) {
     return(
-        <Card>
-                <CardTitle className="c-2">{department.name}</CardTitle>
+        <Card className="c-2">
+                <CardTitle>{department.name}</CardTitle>
             <CardBody>
                 <CardText>Số lượng nhân viên: {department.numberOfStaff}</CardText>
             </CardBody>

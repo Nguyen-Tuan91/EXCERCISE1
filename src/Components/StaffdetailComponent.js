@@ -3,11 +3,11 @@ import { Card, CardImg, CardBody, CardTitle, CardText, Breadcrumb, BreadcrumbIte
 import dateFormat from 'dateformat';
 import { Link } from 'react-router-dom'
 
-    function RenderStaffdetail({staff}) {
+    function RenderStaffdetail({ staff }) {
     if(staff !=null)
      return(
          <div className="row">
-             <div className="col-lg-4 col-md-3 col-12">
+             <div className="col-lg-3 col-md-4 col-12">
                 <Card>
                 <CardImg src={staff.image} alt={staff.name} width="100%" />
                 </Card>
