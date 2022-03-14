@@ -6,7 +6,7 @@ function Footer(props) {
             <div className="container">
                 <div className="row justify-content-center">
                     <div className="col-7 col-sm-5">
-                        <h5>Our Address</h5>
+                        <h5 className="c-4">Our Address</h5>
                         <address>
                             121, Clear Water Bay Road<br />
                             Clear Water Bay, Kowloon<br />

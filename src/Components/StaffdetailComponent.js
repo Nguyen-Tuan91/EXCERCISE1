@@ -14,7 +14,7 @@ import { Link } from 'react-router-dom'
              </div>
              <div className="col-lg-9 col-md-8 col-12" key={staff.id}>
                  <Card>
-                    <CardTitle>Họ và tên:{staff.name}</CardTitle>
+                    <CardTitle className="name-staff">Họ và tên:{staff.name}</CardTitle>
                     <CardBody>
                         <CardText>
                         Ngày sinh: {dateFormat(staff.doB, "dd/mm/yyyy")}
@@ -51,7 +51,7 @@ import { Link } from 'react-router-dom'
                    </Breadcrumb>
                    <div className="col-12">
                        <h3>{props.staff.name}</h3>
-                       <hr />
+                       <br />
                     </div>
                 </div>
                 <div className="row">

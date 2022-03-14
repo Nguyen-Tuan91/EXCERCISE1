@@ -1,50 +1,67 @@
-.header {
-  background-color: #0d6efd;
-}
-.collapse.navbar-collapse {
-  margin-left: 14px;
-}
-.col-lg-2.col-md-4.col-6 {
-  margin-bottom: 12px;
-}
-h5.card-title {
-  margin-top: 12px;
-  text-align: center;
-  background-color: #ccc;
-}
-
-.c-2.card {
-  margin: 12px;
-  background-color: #e9ecef;
-  margin-bottom:1rem;
-}
-.col-12 {
-  margin-bottom: 12px;
-}
 .row-header {
   margin: 0px auto;
   padding: 0px auto;
-}
-.nav-link:hover {
-  color: #fff !important;
 }
 .row-content {
   margin: 0px auto;
   padding: 50px 0px 50px 0px;
   border-bottom: 1px ridge;
-  min-height: 400px;
+  min-height :400px;
 }
-
-.footer {
-  background-color: #04c8ee;
-  margin: 18px 0 auto;
+.header {
+  background: #00ccff !important;
+}
+.footer{
+  background-color: #00ccff;
+  margin: 0px auto;
   padding: 20px 0px 20px 0px;
 }
 .jumbotron {
   padding: 70px 30px 70px 30px;
   margin: 0px auto;
+  background: #9575CD;
+  color: floralwhite;
 }
 
-.container {
-  margin-left: 0 !important;
+address{
+  font-size: 80%;
+  margin: 0px;
+  color: #0f0f0f;
+}
+.navbar-dark {
+  background-color: #0080ff;
+}
+.c-2.card {
+  margin: 10px -30px 10px 20px;
+}
+h5 {
+  font-size: 1.25rem;
+  text-align: center;
+}
+.card-body {
+  padding: 0;
+}
+.card {
+  margin-bottom: 10px;
+}
+h5.name-staff.card-title {
+  text-align: left;
+}
+.card-text:last-child {
+  margin-bottom: 0;
+  padding-bottom: 20px;
+}
+h5.c-3.card-title {
+  text-align: left;
+}
+p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  margin-left: 20px;
+}
+h5.c-4 {
+  text-align: left;
+}
+h5.table-salary.card-title {
+  text-align: left;
 }
