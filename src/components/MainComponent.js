@@ -9,12 +9,12 @@ import Footer from './FooterComponent';
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-const mapStateToProps=() => {
+const mapStateToProps = state => {
   return {
     dishes: state.dishes,
     comments: state.comments,
+    leaders: state.leaders,
     promotions: state.promotions,
-    leaders: state.leaders
   }
 }
 
