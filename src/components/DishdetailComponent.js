@@ -103,7 +103,7 @@ function RenderDish({dish}) {
 }
 
 function RenderComment({comments, postComment, dishId}) {
-    if(comments!=null) {
+    if(comments !=null) {
         const commentListItems=comments.map((comment) => {
             return(
                     <li key={comment.id}>
@@ -132,27 +132,26 @@ function RenderComment({comments, postComment, dishId}) {
 };
 
 const DishDetail=(props) => {
-    if(props.dish !=null) {
+    if (props.dish !=null) {
         return(
             <div className="container">
                 <div className="row">
                     <Breadcrumb>
+                        <BreadcrumbItem><Link to="/Home">Home</Link></BreadcrumbItem>
                         <BreadcrumbItem><Link to="/menu">Menu</Link></BreadcrumbItem>
                         <BreadcrumbItem active>{props.dish.name}</BreadcrumbItem>
                     </Breadcrumb>
                         <div className="col-12">
-                            <h3>{props.dish.name}</h3>
+                            <h3>Menu</h3>
                             <hr />
                         </div>
                 </div>
                 <div className="row">
-                    <div className="col-12 col-md-5 m-1">
                         <RenderDish dish={props.dish} />
-                        <RenderComment comment={props.comment}
+                        <RenderComment comments={props.comments}
                                         postComment={props.postComment}
                                         dishId={props.dish.id}
                         />
-                    </div>
                 </div>
             </div>
         );
