@@ -29,7 +29,7 @@ import { Link } from 'react-router-dom';
                 <div className="row">
                     <div className="col-12">
                         <h3>Nhân viên</h3>
-                        <br />
+                        <hr />
                     </div>
                 </div>
                 <div className="row">
