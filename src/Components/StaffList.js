@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
-import { Card, CardImg, CardTitle, CardBody, Label, Col, Modal, ModalBody, ModalHeader, Button } from 'reactstrap';
+import { Card, CardImg, CardTitle, CardBody, Label, Col, Modal, ModalBody, ModalHeader, Button, Row } from 'reactstrap';
 import { Control, LocalForm, Errors } from 'react-redux-form';
 import { Link } from 'react-router-dom';
 
 
     const required=(val) => (val) && val.length;
-    const maxLength=(len) => (val) => !(val) || (van.length<=len);
-    const minLength=(len) => (val) => (val) && (van.length >=len);
-    const isNumber=(val) => !isNaN(Number(val));
-
+    const maxLength=(len) => (val) => !(val) || (val.length<=len);
+    const minLength=(len) => (val) => (val) && (val.length >=len);
 
     //Presentational Component dùng để render ra từng nhân viên
     function RenderStaff({staff}) {
@@ -40,12 +38,7 @@ import { Link } from 'react-router-dom';
                                 overTime:0,
                                 salary:'',
                                 image:'/assets/images/pizzaro.png',
-                                isModalOpen:false,
-                                touched: {
-                                    name:false,
-                                    doB:false,
-                                    startDate:false
-                                }
+                                isModalOpen:false
                             };
                     
                     this.handleSearch=this.handleSearch.bind(this);
@@ -54,22 +47,20 @@ import { Link } from 'react-router-dom';
                    
                 }
 
-                handleSubmit(values) {
+                handleSubmit(value) {
                     const newStaff={
-                        name:this.state.name,
-                        doB:this.state.doB,
-                        salaryScale:this.state.salaryScale,
-                        startDate:this.state.startDate,
-                        department:this.state.department,
-                        annualLeave:this.state.annualLeave,
-                        overTime:this.state.overTime,
-                        salary:this.state.salary,
+                        name:value.name,
+                        doB:value.doB,
+                        salaryScale:value.salaryScale,
+                        startDate:value.startDate,
+                        department:value.department,
+                        annualLeave:value.annualLeave,
+                        overTime:value.overTime,
+                        salary:value.salary,
                         image:'/assets/images/pizzaro.png'
                     }
-                    if(!this.state.name||!this.state.doB||!this.state.startDate)
-                        this.setState({
-                            touched:{ name:true, doB:true, startDate:true} 
-                        });
+                    if(newStaff.name==='')
+                    alert('Vui lòng nhập');
                     else 
                     this.props.onAdd(newStaff);
                 }
@@ -139,7 +130,7 @@ import { Link } from 'react-router-dom';
                     <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
                         <ModalHeader toggle={this.toggleModal}>Thêm nhân viên</ModalHeader>
                         <ModalBody>
-                            <LocalForm onSubmit={(values) => this.handleSubmit(values)}>
+                            <LocalForm onSubmit={(value) => this.handleSubmit(value)}>
                                 <Row className="form-group">
                                     <Label htmlFor="name" md={5}>Tên</Label>
                                     <Col md={7}>
