@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Card, CardImg, CardTitle, CardBody, Form, FormGroup, Label, Input, 
-        Col, FormFeedback, Modal, ModalBody, ModalHeader } from 'reactstrap';
+        Col, FormFeedback, Modal, ModalBody, ModalHeader, Button } from 'reactstrap';
 import { Link } from 'react-router-dom';
 
 
@@ -33,6 +33,7 @@ import { Link } from 'react-router-dom';
                                 annualLeave:0,
                                 overTime:0,
                                 salary:'',
+                                image:'/assets/images/pizzaro.png',
                                 isModalOpen:false,
                                 touched: {
                                     name:false,
@@ -49,7 +50,7 @@ import { Link } from 'react-router-dom';
                 }
 
                 handleInputChange(event) {
-                    const target=event.targe;
+                    const target=event.target;
                     const value=target.value;
                     const name=target.name;
                     this.setState({
@@ -58,8 +59,6 @@ import { Link } from 'react-router-dom';
                 }
 
                 handleSubmit(event) {
-                    console.log('Current State is:' + JSON.stringify(this.state));
-                    alert('Current State is:' + JSON.stringify(this.state));
                     event.preventDefault();
                     const newStaff={
                         name:this.state.name,
@@ -69,11 +68,12 @@ import { Link } from 'react-router-dom';
                         department:this.state.department,
                         annualLeave:this.state.annualLeave,
                         overTime:this.state.overTime,
+                        salary:this.state.salary,
                         image:'/assets/images/pizzaro.png'
                     }
                     if(!this.state.name||!this.state.doB||!this.state.startDate)
                         this.setState({
-                            touched:{name:true, doB:true, startDate:true}
+                            touched:{ name:true, doB:true, startDate:true} 
                         });
                     else 
                     this.props.onAdd(newStaff);
@@ -91,16 +91,19 @@ import { Link } from 'react-router-dom';
                        doB:'',
                        startDate:''
                    };
-
-                if(this.state.touched.name&&name.length<3)
-                   errors.name="Must be greater than >=3 characters";
+                
+                if(this.state.touched.name && name.length<1)
+                   errors.name="Yêu cầu nhập";
+                else if(this.state.touched.name && name.length<3)
+                   errors.name="Yêu cầu nhiều hơn 2 kí tự";
                 else if(this.state.touched && name.length>30)
-                   errors.name="Must be 30 characters or less";
+                   errors.name="Yêu cầu ít hơn 30 kí tự";
                 
                 if(this.state.touched.doB && doB.length<1)
-                   errors.doB="Please write on";
+                   errors.doB="Yêu cầu nhập";
                 if(this.state.touched.startDate && startDate.length<1)
-                   errors.startDate="Please write on";
+                   errors.startDate="Yêu cầu nhập";
+
                 return errors;
                 }
 
@@ -120,22 +123,23 @@ import { Link } from 'react-router-dom';
             render() {
                 const errors=this.validate(this.state.name, this.state.doB, this.state.startDate);
 
-                const staffList=this.props.staffs
+                const staffList = this.props.staffs
                 .filter((val) => {
-                    if(this.state.nameSearch ==="")
+                  if (this.state.nameSearch === "") 
+                  return val;
+                  else if (
+                    val.name.toLowerCase().includes(this.state.nameSearch.toLowerCase())
+                  )
                     return val;
-                    else if(val.name.toLowerCase().includes(this.state.nameSearch.toLowerCase()))
-                    return val;
-                    return 0;
+                  return 0;
                 })
                 .map((val) => {
-                    return(
-                        <div className="col-lg-2 col-md-4 col-6" key={val.id}>
-                        <RenderStaff staff={val} />
-                        </div>
-                    );
+                  return (
+                    <div className="col-6 col-md-4 col-lg-2" key={val.id}>
+                      <RenderStaff staff={val} />
+                    </div>
+                  );
                 });
-
                 //Render giao diện stafflist
                  return(
                 <div className="container">
@@ -153,7 +157,8 @@ import { Link } from 'react-router-dom';
                     <div className="col-12 col-md-6">
                         <form onSubmit={this.handleSearch} className="form-group row">
                             <div className="col-8 col-md-8">
-                                <input type="text" name="nameF"
+                                <input type="text" 
+                                        name="nameF"
                                         placeholder="Tìm kiếm tên nhân viên"
                                 />
                             </div>
@@ -170,9 +175,11 @@ import { Link } from 'react-router-dom';
                         <ModalBody>
                             <Form onSubmit={this.handleSubmit}>
                                 <FormGroup row>
-                                    <Label htmlFor="name" md={2}>Tên</Label>
-                                    <Col md={10}>
+                                    <Label htmlFor="name" md={5}>Tên</Label>
+                                    <Col md={7}>
                                         <Input type="text" id="name" name="name"
+                                            valid={errors.name===''}
+                                            invalid={errors.name !==''}
                                             value={this.state.name}
                                             onChange={this.handleInputChange}
                                             onBlur={this.handleBlur("name")} />
@@ -180,9 +187,11 @@ import { Link } from 'react-router-dom';
                                     </Col>
                                 </FormGroup>
                                 <FormGroup row>
-                                    <Label htmlFor="doB" md={2}>Ngày Sinh</Label>
-                                    <Col md={10}>
+                                    <Label htmlFor="doB" md={5}>Ngày Sinh</Label>
+                                    <Col md={7}>
                                         <Input type="date" id="doB" name="doB"
+                                            valid={errors.doB===''}
+                                            invalid={errors.doB !==''}
                                             value={this.state.doB}
                                             onChange={this.handleInputChange}
                                             onBlur={this.handleBlur("doB")} />
@@ -190,9 +199,11 @@ import { Link } from 'react-router-dom';
                                     </Col>
                                 </FormGroup>
                                 <FormGroup row>
-                                    <Label htmlFor="startDate" md={2}>Ngày vào công ty</Label>
-                                    <Col md={10}>
+                                    <Label htmlFor="startDate" md={5}>Ngày vào công ty</Label>
+                                    <Col md={7}>
                                         <Input type="date" id="startDate" name="startDate"
+                                            valid={errors.startDate===''}
+                                            invalid={errors.startDate !==''}
                                             value={this.state.startDate}
                                             onChange={this.handleInputChange}
                                             onBlur={this.handleBlur("startDate")} />
@@ -200,18 +211,10 @@ import { Link } from 'react-router-dom';
                                     </Col>
                                 </FormGroup>
                                 <FormGroup row>
-                                    <Label htmlFor="salaryScale" md={2}>Hệ số lương</Label>
-                                    <Col md={10}>
-                                        <Input type="text" id="salaryScale" name="salaryScale"
-                                            value={this.state.salaryScale}
-                                            onChange={this.handleInputChange} />
-                                    </Col>
-                                </FormGroup>
-                                <FormGroup row>
-                                    <Label htmlFor="department" md={2}>Phòng ban</Label>
-                                    <Col md={10}>
-                                        <Input type="select" id="salaryScale" name="salaryScale"
-                                            value={this.state.salaryScale}
+                                    <Label htmlFor="department" md={5}>Phòng ban</Label>
+                                    <Col md={7}>
+                                        <Input type="select" id="department" name="department"
+                                            value={this.state.department}
                                             onChange={this.handleInputChange}>
                                             <option>Sale</option>
                                             <option>HR</option>
@@ -222,16 +225,25 @@ import { Link } from 'react-router-dom';
                                     </Col>
                                 </FormGroup>
                                 <FormGroup row>
-                                    <Label htmlFor="annualLeave" md={2}>Số ngày nghỉ còn lại</Label>
-                                    <Col md={10}>
+                                    <Label htmlFor="salaryScale" md={5}>Hệ số lương</Label>
+                                    <Col md={7}>
+                                        <Input type="text" id="salaryScale" name="salaryScale"
+                                            placeholder="1.0 -->3.0"
+                                            value={this.state.salaryScale}
+                                            onChange={this.handleInputChange} />
+                                    </Col>
+                                </FormGroup>
+                                <FormGroup row>
+                                    <Label htmlFor="annualLeave" md={5}>Số ngày nghỉ còn lại</Label>
+                                    <Col md={7}>
                                         <Input type="text" id="annualLeave" name="annualLeave"
                                             value={this.state.annualLeave}
                                             onChange={this.handleInputChange} />
                                     </Col>
                                 </FormGroup>
                                 <FormGroup row>
-                                    <Label htmlFor="overTime" md={2}>Số ngày làm thêm</Label>
-                                    <Col md={10}>
+                                    <Label htmlFor="overTime" md={5}>Số ngày làm thêm</Label>
+                                    <Col md={7}>
                                         <Input type="text" id="overTime" name="overTime"
                                             value={this.state.overTime}
                                             onChange={this.handleInputChange} />
