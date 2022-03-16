@@ -1,25 +1,20 @@
 import React, { Component } from 'react';
-import { Breadcrumb, BreadcrumbItem, Button, Form, FormGroup, Label, Input, Col, Row, FormFeedback } from 'reactstrap';
+import { Breadcrumb, BreadcrumbItem, Button, Form, FormGroup, Label, Input, Col, FormFeedback } from 'reactstrap';
 import { Link } from 'react-router-dom';
 
 class Contact extends Component {
     constructor(props) {
         super(props);
         this.state={
-            firstname: '',
-            lastname: '',
-            telnum: '',
-            email: '',
-            agree: false,
-            contactType: 'Tel.',
-            message: '',
-            touched: {
-                firstname:false,
-                lastname:false,
-                telnum:false,
-                email:false
+            firstname:'',
+            lastname:'',
+            telnum:'',
+            email:'',
+            agree:false,
+            contactType:'Tel.Num',
+            message:''
             }
-        };
+        
         this.handleInputChange=this.handleInputChange.bind(this);
         this.handleSubmit=this.handleSubmit.bind(this);
         this.handleBlur=this.handleBlur.bind(this);
