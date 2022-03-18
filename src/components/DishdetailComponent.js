@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Card, CardImg, CardBody, CardTitle, CardText, Breadcrumb, BreadcrumbItem, Button, Modal, ModalBody, 
         ModalHeader, Label, Col, Row } from 'reactstrap';
 import {LocalForm, Control, Errors} from 'react-redux-form';
-import Loading from './LoadingComponent';
+import { Loading } from './LoadingComponent';
 
 const required = (val) => val && val.length;
 const maxLength = (len) => (val) => !(val) || (val.length <= len);
