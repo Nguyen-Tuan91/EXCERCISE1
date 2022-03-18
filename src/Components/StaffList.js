@@ -173,7 +173,8 @@ import { Link } from 'react-router-dom';
                                     <Col md={7}>
                                         <Control.date model=".startDate" id="startDate" name="startDate"
                                             className="form-control"
-                                            validators={{required}} />
+                                            validators={{required}} 
+                                        />
                                         <Errors
                                              className="text-danger"
                                              model=".startDate"
