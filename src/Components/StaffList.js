@@ -47,6 +47,7 @@ import { Link } from 'react-router-dom';
                    
                 }
 
+                 /*Sự kiện handleSubmit khi người dùng thêm nhân viên */
                 handleSubmit(value) {
                     const newStaff={
                         name:value.name,
@@ -80,7 +81,7 @@ import { Link } from 'react-router-dom';
 
             render() {
 
-                const staffList = this.props.staffs
+                const staffList = this.props.staff
                 .filter((val) => {
                   if (this.state.nameSearch === "") 
                   return val;
