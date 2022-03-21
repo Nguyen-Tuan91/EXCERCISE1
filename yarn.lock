@@ -7265,7 +7265,7 @@
   optionalDependencies:
     "fsevents" "^1.1.3"
 
-"react-transition-group@^2.2.1", "react-transition-group@2.3.0":
+"react-transition-group@^2.2.1", "react-transition-group@^2.3.0":
   "integrity" "sha512-OU3/swEL8y233u5ajTn3FIcQQ/b3XWjLXB6e2LnM1OK5JATtsyfJvPTZ8c/dawHNqjUltcdHRSpgMtPe7v07pw=="
   "resolved" "https://registry.npmjs.org/react-transition-group/-/react-transition-group-2.3.0.tgz"
   "version" "2.3.0"
