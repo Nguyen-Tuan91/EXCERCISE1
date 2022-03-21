@@ -155,7 +155,7 @@ import { Link } from 'react-router-dom';
                                 <Row className="form-group">
                                     <Label htmlFor="doB" md={5}>Ngày Sinh</Label>
                                     <Col md={7}>
-                                        <Control.date model=".doB" id="doB" name="doB"
+                                        <Control type="date" model=".doB" id="doB" name="doB"
                                            className="form-control"
                                            validators={{required}} />
                                         <Errors
@@ -171,7 +171,7 @@ import { Link } from 'react-router-dom';
                                 <Row className="form-group">
                                     <Label htmlFor="startDate" md={5}>Ngày vào công ty</Label>
                                     <Col md={7}>
-                                        <Control.date model=".startDate" id="startDate" name="startDate"
+                                        <Control type="date" model=".startDate" id="startDate" name="startDate"
                                             className="form-control"
                                             validators={{required}} 
                                         />
