@@ -102,17 +102,19 @@ import { Link } from 'react-router-dom';
                  return(
                 <div className="container">
                     <div className="row">
-                        <div className="col-12 col-md-6">
-                            <h3>Nhân viên</h3>
-                            <hr />
-                        </div>
-                        <div className="col-2 col-auto">
-                            <Button outline onClick={this.toggleModal}>
-                                <span className="fa fa-plus fa-lg"></span>
-                            </Button>
-                        </div>
-                    </div>
-                    <div className="col-12 col-md-6">
+                        <div className="col-12 col-md-6 add-staff">
+                            <div className="row">
+                                <div className="col-10 col-md-10">
+                                    <h3>Nhân viên</h3>
+                                </div>
+                                <div className="col-2 col-auto">
+                                    <Button outline onClick={this.toggleModal}>
+                                    <span className="fa fa-plus fa-lg"></span>
+                                    </Button>
+                                </div>
+                            </div>
+                </div>
+                    <div className="col-12 col-md-6 search-staff">
                         <form onSubmit={this.handleSearch} className="form-group row">
                             <div className="col-8 col-md-8">
                                 <input type="text" 
@@ -124,6 +126,7 @@ import { Link } from 'react-router-dom';
                                 <button className="btn btn-success" type="submit" value="submit">Tìm kiếm</button>
                             </div>
                         </form>
+                    </div>
                     </div>
                     <div className="col-12">
                         <hr />

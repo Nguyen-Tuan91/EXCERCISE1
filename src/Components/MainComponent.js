@@ -6,7 +6,14 @@ import Salary from '../Components/SalaryComponent';
 import { STAFFS, DEPARTMENTS} from '../shared/staffs';
 import Footer from '../Components/FooterComponent';
 import Header from '../Components/HeaderComponent';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+
+const mapStateToProps=state => {
+    return {
+
+    }
+}
 
 class Main extends Component {
     constructor(props){
@@ -47,4 +54,4 @@ class Main extends Component {
     );
     }
 }
-export default Main;
+export default withRouter(connect(mapStateToProps)(Main));
