@@ -108,7 +108,7 @@ export const addComments = (comments) => ({
 
 export const fetchPromos = () => (dispatch) => {
 
-    dispatch(promosLoading());
+    dispatch(promosLoading(true));
 
     return fetch(baseUrl + 'promotions')
         .then(response => {
@@ -145,21 +145,22 @@ export const addPromos = (promos) => ({
 
 export const fetchLeaders= () => (dispatch) => {
     dispatch(leadersLoading(true));
-    return fetch(response => {
-        if(response.ok) {
-            return response;
-        }
-        else {
-            var error=new Error('Error' + response.status + ': ' + response.statusText);
-            error.response=response;
-            throw error;
+    
+    return fetch(baseUrl + 'leaders')
+    .then(response => {
+        if (response.ok) {
+        return response;
+        } else {
+        var error = new Error('Error ' + response.status + ': ' + response.statusText);
+        error.response = response;
+        throw error;
         }
     },
     error => {
-        var errmess=new Error(error.message);
-        throw errmess;
+            var errmess = new Error(error.message);
+            throw errmess;
     })
-    .then(response => response.jason())
+    .then(response => response.json())
     .then(leaders => dispatch(addLeaders(leaders)))
     .catch(error => dispatch(leadersFailed(error.message)));
 }

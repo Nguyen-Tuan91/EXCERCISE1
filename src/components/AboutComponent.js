@@ -3,6 +3,7 @@ import { Breadcrumb, BreadcrumbItem, Card, CardBody, CardHeader, Media } from 'r
 import { Link } from 'react-router-dom';
 import { baseUrl} from '../shared/baseUrl';
 import { Fade, Stagger} from 'react-animation-components';
+import { Loading } from '../components/LoadingComponent';
 
 
 function RenderLeader({leader}) {
