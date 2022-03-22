@@ -6,7 +6,7 @@ export const configureStore= () => {
     const store=createStore(
         combineReducers({
             staffs: Staffs,
-            department: Department,
+            department: Departments,
             staffInDept: StaffInDept,
             salary: Salary
         }),

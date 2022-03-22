@@ -18,16 +18,15 @@ const mapStateToProps=state => {
 class Main extends Component {
     constructor(props){
         super(props);
-        this.state={
-            staff: STAFFS,
-            department: DEPARTMENTS
-        };
     }
     
     render() {
         const StaffWithId=({match}) => {
             return(
-                <StaffDetail staff={this.state.staff.filter((staff) => staff.id===parseInt(match.params.staffId,10))[0]} />
+                <StaffDetail staff={this.props.staffs.staffs.filter((staff) => staff.id===parseInt(match.params.staffId,10))[0]}
+                             isLoading={this.props.staffs.isLoading}
+                             errMess={this.props.staffs.errMess}
+                />
             );
         };
         const addStaff=(staff) => {
