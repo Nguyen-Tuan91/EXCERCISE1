@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Card, CardImg, CardTitle, CardBody, Label, Col, Modal, ModalBody, ModalHeader, Button, Row } from 'reactstrap';
 import { Control, LocalForm, Errors } from 'react-redux-form';
 import { Link } from 'react-router-dom';
+import { Loading } from '../Components/LoadingComponent';
 
 
     const required=(val) => (val) && val.length;
@@ -9,18 +10,27 @@ import { Link } from 'react-router-dom';
     const minLength=(len) => (val) => (val) && (val.length >=len);
 
     //Presentational Component dùng để render ra từng nhân viên
-    function RenderStaff({staff}) {
-        return(
-            <Card>
-                <Link to={`/staff/${staff.id}`}>
-                    <CardImg width="100%" src={staff.image} alt={staff.name} />
-                    <CardBody>
-                        <CardTitle>{staff.name}</CardTitle>
-                    </CardBody>
-                </Link>
-            </Card>
-            
-        );
+    function RenderStaff({staff, isLoading, errMess}) {
+        if(isLoading) {
+            return(
+                <Loading />
+            )
+        } else if(errMess) {
+            return(
+                <h4>{errMess}</h4>
+            )
+        } else
+            return(
+                <Card>
+                    <Link to={`/staff/${staff.id}`}>
+                        <CardImg width="100%" src={staff.image} alt={staff.name} />
+                        <CardBody>
+                            <CardTitle>{staff.name}</CardTitle>
+                        </CardBody>
+                    </Link>
+                </Card>
+                
+            );
     }
         
         class StaffList extends Component {
@@ -81,7 +91,7 @@ import { Link } from 'react-router-dom';
 
             render() {
 
-                const staffList = this.props.staff
+                const staffList = this.props.staffs.staffs
                 .filter((val) => {
                   if (this.state.nameSearch === "") 
                   return val;
@@ -98,6 +108,8 @@ import { Link } from 'react-router-dom';
                     </div>
                   );
                 });
+
+                if(this.props)
                 //Render giao diện stafflist
                  return(
                 <div className="container">

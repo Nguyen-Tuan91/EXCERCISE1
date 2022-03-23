@@ -6,8 +6,7 @@ export const configureStore= () => {
     const store=createStore(
         combineReducers({
             staffs: Staffs,
-            department: Departments,
-            staffInDept: StaffInDept,
+            departments: Departments,
             salary: Salary
         }),
         applyMiddleware(thunk, logger)

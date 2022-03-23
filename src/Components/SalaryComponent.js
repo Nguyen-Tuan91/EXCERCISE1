@@ -1,23 +1,33 @@
 import React, { useState } from 'react';
 import { Card, CardText, CardBody, CardTitle, Breadcrumb, BreadcrumbItem} from 'reactstrap';
 import { Link } from 'react-router-dom';
+import { Loading } from '../Components/LoadingComponent';
 
 
 const luongCB=3000000;
 const luongNgay=200000;
-const RenderSalary=({staff}) => {
-    return(
-        <Card>
-            <CardTitle className="table-salary">{staff.name}</CardTitle>
-            <CardBody>
-                <CardText>Mã nhân viên: {staff.id}</CardText>
-                <CardText>Hệ số lương: {staff.salaryScale}</CardText>
-                <CardText>Số giờ làm thêm: {staff.overTime}</CardText>
-                <CardText className="bg-light p-2 shadow">Lương:{(staff.salaryScale * luongCB + staff.overTime * luongNgay).toFixed(0)}</CardText>
-            </CardBody>
-        </Card>
-    );
-}
+const RenderSalary=({staff, isLoading, errMess}) => {
+    if(isLoading) {
+        return(
+            <Loading />
+        );
+    } else if (errMess) {
+        return(
+            <h4>{errMess}</h4>
+        )
+    } else
+        return(
+            <Card>
+                <CardTitle className="table-salary">{staff.name}</CardTitle>
+                <CardBody>
+                    <CardText>Mã nhân viên: {staff.id}</CardText>
+                    <CardText>Hệ số lương: {staff.salaryScale}</CardText>
+                    <CardText>Số giờ làm thêm: {staff.overTime}</CardText>
+                    <CardText className="bg-light p-2 shadow">Lương:{(staff.salaryScale * luongCB + staff.overTime * luongNgay).toFixed(0)}</CardText>
+                </CardBody>
+            </Card>
+            );
+    }
 function Salary(props) {
     const [sortSalary, setSortSalary]=useState(false);
     

@@ -35,10 +35,10 @@ export const addStaffs= (staffs) => ({
     payload: staffs
 });
 
-export const fetchDepartment= () => (dispatch) => {
-    dispatch(departmentLoading(true));
+export const fetchDepartments= () => (dispatch) => {
+    dispatch(departmentsLoading(true));
 
-    return fetch(baseUrl + 'department')
+    return fetch(baseUrl + 'departments')
     .then(response => {
         if(response.ok) {
             return response;
@@ -52,21 +52,21 @@ export const fetchDepartment= () => (dispatch) => {
         throw errmess;
     })
     .then(response => response.json())
-    .then(department => dispatch(addDepartment(department)))
-    .catch(error => dispatch(departmentFailed(error.message)));
+    .then(departments => dispatch(addDepartments(departments)))
+    .catch(error => dispatch(departmentsFailed(error.message)));
 }
 
-export const departmentLoading= () => ({
-    type: ActionTypes.DEPARTMENT_LOADING
+export const departmentsLoading= () => ({
+    type: ActionTypes.DEPARTMENTS_LOADING
 });
 
-export const departmentFailed= (errmess) => ({
-    type: ActionTypes.DEPARTMENT_FAILED,
+export const departmentsFailed= (errmess) => ({
+    type: ActionTypes.DEPARTMENTS_FAILED,
     payload: errmess
 });
-export const addDepartment= (department) => ({
-    type: ActionTypes.ADD_DEPARTMENT,
-    payload: department
+export const addDepartments= (departments) => ({
+    type: ActionTypes.ADD_DEPARTMENTS,
+    payload: departments
 });
 
 export const fetchSalary= () => (dispatch) => {
@@ -101,38 +101,4 @@ export const salaryFailed= (errmess) => ({
 export const addSalary= (salary) => ({
     type: ActionTypes.ADD_SALARY,
     payload: salary
-});
-
-export const fetchStaffInDept= () => (dispatch) => {
-    dispatch(staffInDeptLoading(true));
-
-    return fetch(baseUrl + 'staffInDept')
-    .then(response => {
-        if(response.ok) {
-            return response;
-        } else {
-            var error=new Error('Error' + response.status + ": " + response.statusText);
-            error.response=response;
-            throw error;
-        }
-    }, error => {
-        var errmess= new Error(error.message);
-        throw errmess;
-    })
-    .then(response => response.json())
-    .then(staffInDept => dispatch(addStaffInDept(staffInDept)))
-    .catch(error => dispatch(staffInDeptFailed(error.message)));
-}
-
-export const staffInDeptLoading= () => ({
-    type: ActionTypes.STAFFINDEPT_LOADING
-});
-
-export const staffInDeptFailed= (errmess) => ({
-    type: ActionTypes.STAFFINDEPT_FAILED,
-    payload: errmess
-});
-export const addStaffInDept= (staffInDept) => ({
-    type: ActionTypes.STAFFINDEPT_SALARY,
-    payload: staffInDept
 });
