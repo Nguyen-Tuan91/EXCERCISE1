@@ -55,6 +55,7 @@ class Main extends Component {
             <Header />
                 <Switch>
                     <Route exact path="/staff" component={() => <StaffList staffs={this.props.staffs.staffs}
+                                                                           postStaff={this.props.postStaff}
                                                                            isLoading={this.props.staffs.isLoading}
                                                                            errMess={this.props.staffs.erMess} />} 
                     />
