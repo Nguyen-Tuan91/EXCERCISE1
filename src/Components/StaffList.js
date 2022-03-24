@@ -5,13 +5,14 @@ import { Link } from 'react-router-dom';
 import { Loading } from '../Components/LoadingComponent';
 
 
+
     const required=(val) => (val) && val.length;
     const maxLength=(len) => (val) => !(val) || (val.length<=len);
     const minLength=(len) => (val) => (val) && (val.length >=len);
-    const isNumber = (val) => !isNaN(Number(val));
+
 
     //Presentational Component dùng để render ra từng nhân viên
-    function RenderStaff({staff, isLoading, errMess}) {
+    function RenderStaff({staff, isLoading, errMess }) {
         if(isLoading) {
             return(
                 <Loading />
@@ -53,7 +54,7 @@ import { Loading } from '../Components/LoadingComponent';
 
             render() {
 
-                const staffList = this.props.staffs.staffs
+                const staffList = this.props.staffs
                 .filter((val) => {
                   if (this.state.nameSearch === "") 
                   return val;
@@ -81,7 +82,7 @@ import { Loading } from '../Components/LoadingComponent';
                                 <div className="col-10 col-md-10">
                                     <h3>Nhân viên</h3>
                                 </div>
-                            <AddStaffForm onAdd={this.props.onAddStaff} />
+                            <AddStaffForm onAdd={this.props.onAddStaff}/>
                             </div>
                 </div>
                     <div className="col-12 col-md-6 search-staff">
@@ -145,7 +146,7 @@ import { Loading } from '../Components/LoadingComponent';
             if(newStaff.name==='')
             alert('Vui lòng nhập');
             else 
-            this.props.onAdd(newStaff);
+            this.props.postStaff(newStaff);
         }
 
         /*Hàm bật tắt Modal*/
@@ -266,8 +267,5 @@ import { Loading } from '../Components/LoadingComponent';
                 </React.Fragment>
             )
         }
-    }
-        
-    
-        
+    }     
 export default StaffList;

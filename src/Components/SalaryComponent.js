@@ -6,7 +6,7 @@ import { Loading } from '../Components/LoadingComponent';
 
 const luongCB=3000000;
 const luongNgay=200000;
-const RenderSalary=({staff, isLoading, errMess}) => {
+const RenderSalary=({salary, isLoading, errMess}) => {
     if(isLoading) {
         return(
             <Loading />
@@ -18,12 +18,12 @@ const RenderSalary=({staff, isLoading, errMess}) => {
     } else
         return(
             <Card>
-                <CardTitle className="table-salary">{staff.name}</CardTitle>
+                <CardTitle className="table-salary">{salary.name}</CardTitle>
                 <CardBody>
-                    <CardText>Mã nhân viên: {staff.id}</CardText>
-                    <CardText>Hệ số lương: {staff.salaryScale}</CardText>
-                    <CardText>Số giờ làm thêm: {staff.overTime}</CardText>
-                    <CardText className="bg-light p-2 shadow">Lương:{(staff.salaryScale * luongCB + staff.overTime * luongNgay).toFixed(0)}</CardText>
+                    <CardText>Mã nhân viên: {salary.id}</CardText>
+                    <CardText>Hệ số lương: {salary.salaryScale}</CardText>
+                    <CardText>Số giờ làm thêm: {salary.overTime}</CardText>
+                    <CardText className="bg-light p-2 shadow">Lương:{(salary.salaryScale * luongCB + salary.overTime * luongNgay).toFixed(0)}</CardText>
                 </CardBody>
             </Card>
             );
@@ -31,10 +31,12 @@ const RenderSalary=({staff, isLoading, errMess}) => {
 function Salary(props) {
     const [sortSalary, setSortSalary]=useState(false);
     
-    const staff=props.staffs.sort((a, b) => sortSalary?a.salaryScale - b.salaryScale : b.salaryScale-a.salaryScale).map((staff) => {
+    const salary=props.salary
+    .sort((a, b) => sortSalary?a.salaryScale - b.salaryScale : b.salaryScale-a.salaryScale)
+    .map((staff) => {
         return(
             <div className="col-lg-4 col-md-6 col-12" key={staff.id}>
-                <RenderSalary staff={staff} />
+                <RenderSalary salary={staff} />
             </div>
         );
     });
@@ -49,9 +51,9 @@ function Salary(props) {
             </div>
             <button className="btn btn-danger" onClick={() => setSortSalary(!sortSalary)}>Sắp xếp theo hệ số lương</button>
             <div className="row">
-                {staff}
+                {salary}
             </div>
         </div>
     );
-}
+};
 export default Salary;

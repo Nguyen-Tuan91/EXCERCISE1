@@ -7,7 +7,7 @@ import Salary from '../Components/SalaryComponent';
 import Footer from '../Components/FooterComponent';
 import Header from '../Components/HeaderComponent';
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
-import { fetchStaffs, fetchDepartments, fetchSalary, fetchStaffInDept } from '../redux/ActionCreators';
+import { fetchStaffs, fetchDepartments, fetchSalary} from '../redux/ActionCreators';
 import { connect } from 'react-redux';
 
 const mapStateToProps=state => {
@@ -31,7 +31,6 @@ class Main extends Component {
         this.props.fetchDepartments();
         this.props.fetchSalary();
     }
-    
     render() {
         const StaffWithId=({match}) => {
             return(

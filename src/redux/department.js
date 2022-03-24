@@ -1,6 +1,6 @@
 import * as ActionTypes from './ActionTypes';
 
-export const Departments= (state = {
+export const DeptReducer= (state = {
     isLoading: true,
     errMess: null,
     departments:[]

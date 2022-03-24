@@ -16,8 +16,8 @@ function RenderStaffItem({staff}) {
 };
 
 const StaffInDept=(props) => {
-    const staffs=props.staff.map((val) => {
-        <div className="col-6 col-md-4 col-lg-2">
+    const staffs=props.staffs.map((val) => {
+        <div className="col-6 col-md-4 col-lg-2" key={val.id}>
             <RenderStaffItem staff={val} />
         </div>
     });

@@ -19,7 +19,7 @@ function RenderDepartment({department}) {
 
 //Container Component
 function Department(props) {
-    const department=props.departments.departments.map((department) => {
+    const department=props.departments.map((department) => {
         return(
             <div className="col-lg-4 col-md-6 col-12" key={department.id}>
                 <RenderDepartment department={department} />
