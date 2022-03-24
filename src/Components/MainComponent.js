@@ -22,7 +22,7 @@ const mapDispatchToProps= dispatch => ({
     fetchStaffs: () => {dispatch(fetchStaffs())},
     fetchDepartments: () => {dispatch(fetchDepartments())},
     fetchSalary: () => {dispatch(fetchSalary())},
-    fetchStaffInDept: () => {dispatch(fetchStaffInDept())}
+    
 })
 class Main extends Component {
    
@@ -55,7 +55,7 @@ class Main extends Component {
             <Header />
                 <Switch>
                     <Route exact path="/staff" component={() => <StaffList staffs={this.props.staffs.staffs}
-                                                                           postStaff={this.props.postStaff}
+                                                                           onAddStaff={this.props.postStaff}
                                                                            isLoading={this.props.staffs.isLoading}
                                                                            errMess={this.props.staffs.erMess} />} 
                     />

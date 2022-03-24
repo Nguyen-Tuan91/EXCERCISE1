@@ -81,7 +81,7 @@ import { Loading } from '../Components/LoadingComponent';
                                 <div className="col-10 col-md-10">
                                     <h3>Nhân viên</h3>
                                 </div>
-                            <AddStaffForm postStaff={postStaff} />
+                            <AddStaffForm onAdd={this.props.onAddStaff} />
                             </div>
                 </div>
                     <div className="col-12 col-md-6 search-staff">
