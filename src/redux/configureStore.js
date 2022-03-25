@@ -5,7 +5,6 @@ import { StaffReducer } from "./staffs";
 import { DeptReducer } from "./department";
 import { SalaryReducer } from './staffsSalary';
 
-//import cai reducer vô
 
 export const ConfigureStore= () => {
     const store=createStore(

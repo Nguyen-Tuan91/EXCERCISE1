@@ -31,23 +31,23 @@ class RenderDept extends Component {
 //Container components
 class Department extends Component {
   render() {
-    console.log(this.props.departments)
-
-    return (
-      <div className="container">
-        <div className="row">
-            {this.props.departments.map((department) => (
-        <div className="col-12 col-md-6 col-lg-4" key={department.id}>
-          <RenderDept department={department}
-                      staffNo={this.props.staffs.filter((staff) => staff.departmentId === department.id)}
-          />
+    const departments = this.props.departments.map((department) => {
+        return (
+          <div className="col-12 col-md-6 col-lg-4 mt-2 mb-2" key={department.id}>
+            <RenderDept
+              department={department}
+              staffNo={this.props.staffs.filter((staff) => staff.departmentId === department.id
+              )}
+            />
+          </div>
+        );
+      });
+      return (
+        <div className="container">
+          <div className="row shadow m-3">{departments}</div>
         </div>
-            ))
+      );
     }
-        </div>
-      </div>
-    );
   }
-}
-
-export default Department;
+  
+  export default Department;

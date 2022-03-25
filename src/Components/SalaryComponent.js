@@ -1,23 +1,13 @@
 import React, { useState } from 'react';
 import { Card, CardText, CardBody, CardTitle, Breadcrumb, BreadcrumbItem} from 'reactstrap';
 import { Link } from 'react-router-dom';
-import { Loading } from '../Components/LoadingComponent';
 import { FadeTransform } from 'react-animation-components';
 
 
 const luongCB=3000000;
 const luongNgay=200000;
 
-const RenderSalary=({salary, isLoading, errMess}) => {
-    if(isLoading) {
-        return(
-            <Loading />
-        );
-    } else if (errMess) {
-        return(
-            <h4>{errMess}</h4>
-        )
-    } else
+const RenderSalary=({salary}) => {
         return(
             <FadeTransform
                 in 

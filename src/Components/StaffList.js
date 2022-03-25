@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Card, CardImg, CardTitle, CardBody, Label, Col, Modal, ModalBody, ModalHeader, Button, Row } from 'reactstrap';
 import { Control, LocalForm, Errors } from 'react-redux-form';
 import { Link } from 'react-router-dom';
-import { Loading } from '../Components/LoadingComponent';
 import { FadeTransform } from "react-animation-components";
 
 
@@ -13,16 +12,7 @@ import { FadeTransform } from "react-animation-components";
 
 
     //Presentational Component dùng để render ra từng nhân viên
-    function RenderStaff({staff, isLoading, errMess, onDeleteStaff }) {
-        if(isLoading) {
-            return(
-                <Loading />
-            )
-        } else if(errMess) {
-            return(
-                <h4>{errMess}</h4>
-            )
-        } else
+    function RenderStaff({staff, onDeleteStaff }) {
             return(
                 <FadeTransform
                       in 
@@ -65,14 +55,12 @@ import { FadeTransform } from "react-animation-components";
                 }
 
             render() {
-
+              
                 const staffList = this.props.staffs
                 .filter((val) => {
                   if (this.state.nameSearch === "") 
-                  return val;
-                  else if (
-                    val.name.toLowerCase().includes(this.state.nameSearch.toLowerCase())
-                  )
+                    return val;
+                  else if ( val.name.toLowerCase().includes(this.state.nameSearch.toLowerCase()) )
                     return val;
                   return 0;
                 })
@@ -84,7 +72,7 @@ import { FadeTransform } from "react-animation-components";
                     </div>
                   );
                 });
-
+                
                 //Render giao diện stafflist
                  return(
                 <div className="container">
@@ -119,6 +107,7 @@ import { FadeTransform } from "react-animation-components";
                     </div>
                 </div>
             );
+            
             } 
     }
     
