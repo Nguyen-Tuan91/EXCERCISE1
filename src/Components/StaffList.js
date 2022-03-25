@@ -3,6 +3,7 @@ import { Card, CardImg, CardTitle, CardBody, Label, Col, Modal, ModalBody, Modal
 import { Control, LocalForm, Errors } from 'react-redux-form';
 import { Link } from 'react-router-dom';
 import { Loading } from '../Components/LoadingComponent';
+import { FadeTransform } from "react-animation-components";
 
 
 
@@ -23,14 +24,20 @@ import { Loading } from '../Components/LoadingComponent';
             )
         } else
             return(
-                <Card>
-                    <Link to={`/staff/${staff.id}`}>
+                <FadeTransform
+                      in 
+                      transFromProps={{
+                        exitTransFrom:'scale(0.5)+ translateY(-50%)'
+                      }}>
+                     <Card>
+                        <Link to={`/staff/${staff.id}`}>
                         <CardImg width="100%" src={staff.image} alt={staff.name} />
                         <CardBody>
                             <CardTitle>{staff.name}</CardTitle>
                         </CardBody>
-                    </Link>
+                        </Link>
                 </Card>
+                </FadeTransform>
             );
     }
         
@@ -67,12 +74,12 @@ import { Loading } from '../Components/LoadingComponent';
                 .map((val) => {
                   return (
                     <div className="col-6 col-md-4 col-lg-2" key={val.id}>
-                      <RenderStaff staff={val} />
+                      <RenderStaff staff={val}
+                                    onDeleteStaff={this.props.onDeleteStaff}/>
                     </div>
                   );
                 });
 
-                if(this.props)
                 //Render giao diện stafflist
                  return(
                 <div className="container">
@@ -133,20 +140,16 @@ import { Loading } from '../Components/LoadingComponent';
          /*Sự kiện handleSubmit khi người dùng thêm nhân viên */
          handleSubmit(value) {
             const newStaff={
-                name:value.name,
-                doB:value.doB,
-                salaryScale:value.salaryScale,
-                startDate:value.startDate,
-                departmentId:this.state.departmentId,
-                annualLeave:value.annualLeave,
-                overTime:value.overTime,
-                salary:value.salary,
-                image:'/assets/images/pizzaro.png'
+                name: value.name,
+                doB: this.state.doB,
+                salaryScale: parseInt(value.salaryScale, 10),
+                startDate: this.state.startDate,
+                image: "/asset/images/alberto.png",
+                departmentId: this.state.departmentId,
+                annualLeave: parseInt(value.annualLeave, 10),
+                overTime: parseInt(value.overTime, 10),
             }
-            if(newStaff.name==='')
-            alert('Vui lòng nhập');
-            else 
-            this.props.postStaff(newStaff);
+            this.props.onAdd(newStaff);
         }
 
         /*Hàm bật tắt Modal*/
@@ -265,7 +268,7 @@ import { Loading } from '../Components/LoadingComponent';
                     </ModalBody>
                 </Modal>
                 </React.Fragment>
-            )
+            );
         }
     }     
 export default StaffList;

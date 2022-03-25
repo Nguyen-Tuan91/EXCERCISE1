@@ -1,22 +1,11 @@
 import React, { Component } from "react";
-import {
-  CardImg,
-  CardText,
-  CardTitle,
-  Breadcrumb,
-  BreadcrumbItem,
-  Row,
-  Col,
-  Label,
-  Button,
-  Form,
-} from "reactstrap";
+import { CardImg, CardText,CardTitle, Breadcrumb, BreadcrumbItem, Row, Col, Label, Button, Form } from "reactstrap";
 import { Link } from "react-router-dom";
 import dateFormat from "dateformat";
 import { FadeTransform } from "react-animation-components";
 
-function RenderStaff({ staff, dept }) {
-  if (staff != null && dept != null) {
+function RenderStaff({ staff, department }) {
+  if (staff != null && department != null) {
     return (
       <div className="col-12">
         <FadeTransform
@@ -37,7 +26,7 @@ function RenderStaff({ staff, dept }) {
               <CardText>
                 Ngày vào công ty: {dateFormat(staff.startDate, "dd/mm/yyyy")}
               </CardText>
-              <CardText>Phòng ban: {dept.name}</CardText>
+              <CardText>Phòng ban: {department.name}</CardText>
               <CardText>Số ngày nghỉ còn lại: {staff.annualLeave}</CardText>
               <CardText>Số ngày đã làm thêm: {staff.overTime}</CardText>
             </div>
@@ -56,10 +45,11 @@ class EditForm extends Component {
     this.state = {
       staff: props.staff,
     };
+    this.handleSubmit=this.handleSubmit.bind(this);
   }
-
   handleSubmit(e) {
     e.preventDefault();
+
     const staffUpdated = {
       id: this.state.staff.id,
       name: this.state.staff.name,
@@ -76,7 +66,7 @@ class EditForm extends Component {
   render() {
     return (
       <div>
-        <Form onSubmit={this.handleSubmit.bind(this)}>
+        <Form onSubmit={this.handleSubmit}>
           <Row>
             <Col md={4}>
               <Label htmlFor="name">Name</Label>
@@ -221,7 +211,7 @@ class StaffDetail extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      select: true,
+      select: true
     };
   }
   render() {
@@ -237,10 +227,7 @@ class StaffDetail extends Component {
             </Breadcrumb>
             <div className="col-12">
               <h3>{this.props.staff.name}</h3>
-              <Button
-                color="success"
-                onClick={() => this.setState({ select: !this.state.select })}
-              >
+              <Button color="success" onClick={() => this.setState({select: !this.state.select})}>
                 Update
               </Button>
               <hr />
@@ -254,13 +241,9 @@ class StaffDetail extends Component {
               }}
             >
               <div className="row mb-3">
-                <RenderStaff
-                  staff={this.props.staff}
-                  dept={
-                    this.props.dept.filter(
-                      (dp) => dp.id === this.props.staff.departmentId
-                    )[0]
-                  }
+                <RenderStaff staff={this.props.staffs}
+                            department={this.props.department.filter(
+                            (department) => department.id === this.props.staff.departmentId)[0]}
                 />
               </div>
             </FadeTransform>
