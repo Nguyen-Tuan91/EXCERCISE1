@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import { Card, CardText, CardBody, CardTitle, Breadcrumb, BreadcrumbItem} from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { Loading } from '../Components/LoadingComponent';
-import { Fadetransform } from 'react-animation-components';
+import { FadeTransform } from 'react-animation-components';
 
 
 const luongCB=3000000;
 const luongNgay=200000;
+
 const RenderSalary=({salary, isLoading, errMess}) => {
     if(isLoading) {
         return(
@@ -18,7 +19,7 @@ const RenderSalary=({salary, isLoading, errMess}) => {
         )
     } else
         return(
-            <Fadetransform
+            <FadeTransform
                 in 
                 transformProps={{
                     exitTransForm: 'scale(0.5) translateY(-50%)'
@@ -32,7 +33,7 @@ const RenderSalary=({salary, isLoading, errMess}) => {
                     <CardText className="bg-light p-2 shadow">Lương:{(salary.salaryScale * luongCB + salary.overTime * luongNgay).toFixed(0)}</CardText>
                 </CardBody>
                 </Card>
-            </Fadetransform>
+            </FadeTransform>
             );
     }
 const Salary=(props) => {

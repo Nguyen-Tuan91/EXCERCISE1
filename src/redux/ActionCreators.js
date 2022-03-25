@@ -123,8 +123,9 @@ export const addDepartments= (departments) => ({
 export const fetchStaffsSalary= () => (dispatch) => {
     dispatch(staffsSalaryLoading(true));
 
-    return fetch(baseUrl + 'staffSalary')
+    return fetch(baseUrl + 'staffsSalary')
     .then((response) => {
+        console.log("adasdasd",response)
         if(response.ok) {
             return response;
         } else {

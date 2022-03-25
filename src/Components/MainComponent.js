@@ -34,6 +34,7 @@ class Main extends Component {
         this.props.fetchDepartments();
         this.props.fetchStaffsSalary();
     }
+
     render() {
         const StaffWithId=({match}) => {
             return(
@@ -48,7 +49,7 @@ class Main extends Component {
       const StaffWithDept=({match}) => {
           return(
               <StaffInDept  dept={this.props.departments.departments.filter((dept) => dept.id===match.params.deptId)[0]}
-                            staff={this.props.staffs.staffs.filter((staff) => staff.id===match.params.staffId)}
+                            staff={this.props.staffs.staffs.filter((staff) => staff.departmentId===match.params.deptId)}
                />
             );
       };
@@ -58,7 +59,7 @@ class Main extends Component {
             <Header />
                 <TransitionGroup>
                     <CSSTransition key={this.props.location.key} classNames="page" timout={300}>
-                        <Switch location={this.props.location}>
+                        <Switch>
                         <Route exact path="/staff" component={() => <StaffList staffs={this.props.staffs.staffs}
                                                                             onAddStaff={this.props.postStaff}
                                                                             isLoading={this.props.staffs.isLoading}
@@ -66,7 +67,7 @@ class Main extends Component {
                                                                             onDeleteStaff={this.props.deleteStaff} />}
                         />
                         <Route path="/staff/:staffId" component={StaffWithId} />
-                        <Route path="/department/:departmentId" component={StaffWithDept} />
+                        <Route path="/department/:deptId" component={StaffWithDept} />
                         <Route path="/department" component={() => <Department departments={this.props.departments.departments}
                                                                                 staffs={this.props.staffs.staffs} />} />
                         <Route path="/salary" component={() => <Salary salary={this.props.staffsSalary.staffsSalary} />} />

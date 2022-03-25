@@ -7,6 +7,7 @@ export const DeptReducer= (state = {
 },action) => {
     switch(action.type) {
         case ActionTypes.ADD_DEPARTMENTS:
+            console.log( action.payload);
             return {...state, isLoading: false, errMess: null, departments: action.payload}
         case ActionTypes.DEPARTMENTS_LOADING:
             return {...state, isLoading: true, errMess: null, departments: []}

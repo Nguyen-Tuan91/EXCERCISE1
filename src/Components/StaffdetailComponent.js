@@ -61,8 +61,8 @@ const StaffDetail=(props) => {
                   exitTransform: "scale(0.5) translateY(-50%)"}}>
                 <div className="row mb-3">
                   <RenderStaff staff={props.staff}
-                              department={props.department.filter(
-                              (department) => department.id === props.staff.departmentId)[0]}
+                              department={props.dept.filter(
+                              (dept) => dept.id === props.staff.departmentId)[0]}
                   />
                 </div>
               </FadeTransform>
