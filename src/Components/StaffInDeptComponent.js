@@ -31,16 +31,16 @@ const StaffInDept= (props) => {
         );
     });
 
-    if(props.staff !=null & props.department !=null) {
+    if(props.staff !=null & props.dept !=null) {
         return(
             <div className="container">
                 <div className="row">
                     <Breadcrumb>
                     <BreadcrumbItem><Link to="/departments">Phòng ban</Link></BreadcrumbItem>
-                    <BreadcrumbItem active>{props.department.name}</BreadcrumbItem>
+                    <BreadcrumbItem active>{props.dept.name}</BreadcrumbItem>
                     </Breadcrumb>
                     <div className="col-12">
-                        <h3>{props.department.name}</h3>
+                        <h3>{props.dept.name}</h3>
                         <hr />
                     </div>
                 </div>

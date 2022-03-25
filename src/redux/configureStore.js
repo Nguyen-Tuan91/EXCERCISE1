@@ -3,7 +3,7 @@ import thunk from "redux-thunk";
 import logger from "redux-logger";
 import { StaffReducer } from "./staffs";
 import { DeptReducer } from "./department";
-import { SalaryReducer } from './salary';
+import { SalaryReducer } from './staffsSalary';
 
 //import cai reducer vô
 
@@ -12,7 +12,7 @@ export const ConfigureStore= () => {
         combineReducers({
             staffs: StaffReducer, 
             departments: DeptReducer,
-            staffSalary: SalaryReducer
+            staffsSalary: SalaryReducer
         }),
         applyMiddleware(thunk, logger)
     );

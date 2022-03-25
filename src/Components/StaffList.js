@@ -13,7 +13,7 @@ import { FadeTransform } from "react-animation-components";
 
 
     //Presentational Component dùng để render ra từng nhân viên
-    function RenderStaff({staff, isLoading, errMess }) {
+    function RenderStaff({staff, isLoading, errMess, onDeleteStaff }) {
         if(isLoading) {
             return(
                 <Loading />
@@ -29,14 +29,19 @@ import { FadeTransform } from "react-animation-components";
                       transFromProps={{
                         exitTransFrom:'scale(0.5)+ translateY(-50%)'
                       }}>
+                    <div>
+                    <Link to={`/staff/${staff.id}`}>
                      <Card>
-                        <Link to={`/staff/${staff.id}`}>
                         <CardImg width="100%" src={staff.image} alt={staff.name} />
                         <CardBody>
                             <CardTitle>{staff.name}</CardTitle>
                         </CardBody>
-                        </Link>
-                </Card>
+                     </Card>
+                    </Link>
+                    <Button color="danger" onClick={() => onDeleteStaff(staff.id)}>
+                        Delete
+                    </Button>
+                     </div>
                 </FadeTransform>
             );
     }
@@ -75,7 +80,7 @@ import { FadeTransform } from "react-animation-components";
                   return (
                     <div className="col-6 col-md-4 col-lg-2" key={val.id}>
                       <RenderStaff staff={val}
-                                    onDeleteStaff={this.props.onDeleteStaff}/>
+                                   onDeleteStaff={this.props.onDeleteStaff}/>
                     </div>
                   );
                 });

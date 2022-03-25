@@ -7,7 +7,7 @@ import Salary from '../Components/SalaryComponent';
 import Footer from '../Components/FooterComponent';
 import Header from '../Components/HeaderComponent';
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
-import { postStaff, fetchStaffs, fetchDepartments, fetchStaffSalary, updateStaff, deleteStaff} from '../redux/ActionCreators';
+import { postStaff, fetchStaffs, fetchDepartments, fetchStaffsSalary, deleteStaff} from '../redux/ActionCreators';
 import { connect } from 'react-redux';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
@@ -15,7 +15,7 @@ const mapStateToProps=state => {
     return {
         staffs: state.staffs,
         departments: state.departments,
-        staffSalary: state.staffSalary,
+        staffsSalary: state.staffsSalary,
     }
 }
 
@@ -23,8 +23,7 @@ const mapDispatchToProps= dispatch => ({
     postStaff: (staff) => {dispatch(postStaff(staff))},
     fetchStaffs: () => {dispatch(fetchStaffs())},
     fetchDepartments: () => {dispatch(fetchDepartments())},
-    fetchStaffSalary: () => {dispatch(fetchStaffSalary())},
-    updateStaff: (staff) => {dispatch(updateStaff(staff))},
+    fetchStaffsSalary: () => {dispatch(fetchStaffsSalary())},
     deleteStaff: (id) => {dispatch(deleteStaff(id))}   
 });
 
@@ -33,7 +32,7 @@ class Main extends Component {
     componentDidMount() {
         this.props.fetchStaffs();
         this.props.fetchDepartments();
-        this.props.fetchStaffSalary();
+        this.props.fetchStaffsSalary();
     }
     render() {
         const StaffWithId=({match}) => {
@@ -41,14 +40,14 @@ class Main extends Component {
                 <StaffDetail staff={this.props.staffs.staffs.filter((staff) => staff.id===parseInt(match.params.staffId,10))[0]}
                              isLoading={this.props.staffs.isLoading}
                              errMess={this.props.staffs.errMess}
-                             department={this.props.departments.departments}
-                             onUpdateStaff={this.props.updateStaff}
+                             dept={this.props.departments.departments}
+                           
                 />
             );
         };
       const StaffWithDept=({match}) => {
           return(
-              <StaffInDept  department={this.props.departments.departments.filter((department) => department.id===match.params.departmentId)[0]}
+              <StaffInDept  dept={this.props.departments.departments.filter((dept) => dept.id===match.params.deptId)[0]}
                             staff={this.props.staffs.staffs.filter((staff) => staff.id===match.params.staffId)}
                />
             );
@@ -70,7 +69,7 @@ class Main extends Component {
                         <Route path="/department/:departmentId" component={StaffWithDept} />
                         <Route path="/department" component={() => <Department departments={this.props.departments.departments}
                                                                                 staffs={this.props.staffs.staffs} />} />
-                        <Route path="/salary" component={() => <Salary salary={this.props.staffSalary.staffSalary} />} />
+                        <Route path="/salary" component={() => <Salary salary={this.props.staffsSalary.staffsSalary} />} />
                         <Redirect to="/staff" />
                         </Switch>
                     </CSSTransition>
