@@ -13,9 +13,9 @@ class RenderDepartment extends Component {
           exitTransform: "scale(0.5) translateY(-50%)",
         }}
       >
-        <Link to={`/departments/${this.props.department.id}`}>
+        <Link to={`/departments/${this.props.dept.id}`}>
           <Card>
-            <CardTitle className="m-2">{this.props.department.name}</CardTitle>
+            <CardTitle className="m-2">{this.props.dept.name}</CardTitle>
             <CardBody>
               <CardText>
                 Số lượng nhân viên: {this.props.staffNo.length}
@@ -31,23 +31,24 @@ class RenderDepartment extends Component {
 //Container components
 class Department extends Component {
   render() {
+    //Dung map() de fetch toan bo data tu props cua MainComponent
+    console.log(this.props.departments);
     const departments = this.props.departments.map((department) => {
-        return (
-          <div className="col-12 col-md-6 col-lg-4 mt-2 mb-2" key={department.id}>
-            <RenderDepartment
-              department={department}
-              staffNo={this.props.staffs.filter((staff) => staff.departmentId === department.id
-              )}
-            />
-          </div>
-        );
-      });
       return (
-        <div className="container">
-          <div className="row shadow m-3">{departments}</div>
+        <div className="col-12 col-md-6 col-lg-4 mt-2 mb-2" key={department.id}>
+          <RenderDepartment
+            dept={department}
+            staffNo={this.props.staffs.filter((staff) => staff.departmentId === department.id)}
+          />
         </div>
       );
-    }
+    });
+    return (
+      <div className="container">
+        <div className="row shadow m-3">{departments}</div>
+      </div>
+    );
   }
-  
-  export default Department;
+}
+
+export default Department;

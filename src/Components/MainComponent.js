@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import StaffDetail from "./StaffdetailComponent";
-import Departmentdetail from "./DepartmentdetailComponent";
-import Header from "./HeaderComponent";
-import Footer from "./FooterComponent";
-import StaffList from "./StaffListComponent";
-import Department from "./DepartmentComponent";
-import Salary from "./SalaryComponent";
+import StaffDetail from "../Components/StaffdetailComponent";
+import StaffInDept from "../Components/StaffInDeptComponent";
+import Header from "../Components/HeaderComponent";
+import Footer from "../Components/FooterComponent";
+import StaffList from "../Components/StaffList";
+import Department from "../Components/DepartmentComponent";
+import Salary from "../Components/SalaryComponent";
 import { Switch, Route, Redirect, withRouter } from "react-router-dom";
 import {postStaff,fetchStaffs,fetchDepartments,fetchStaffsSalary,deleteStaff,updateStaff} from "../redux/ActionCreators";
 import { connect } from "react-redux";
@@ -51,10 +51,9 @@ class Main extends Component {
     };
     const StaffWithDept = ({ match }) => {
       return (
-        <Departmentdetail
+        <StaffInDept
           dept={this.props.departments.departments.filter((dept) => dept.id === match.params.deptId)[0]}
-          staff={this.props.staffs.staffs.filter((staff) => staff.departmentId === match.params.deptId
-          )}
+          staff={this.props.staffs.staffs.filter((staff) => staff.departmentId === match.params.deptId)}
         />
       );
     };

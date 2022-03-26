@@ -22,7 +22,7 @@ function RenderStaffItem({staff}) {
     );
 };
 
-const Departmentdetail= (props) => {
+const StaffInDept= (props) => {
     const staffs=props.staff.map((val) => {
         return (
             <div className="col-6 col-md-4 col-lg-2" key={val.id}>
@@ -53,4 +53,4 @@ const Departmentdetail= (props) => {
         return <div></div>
     }
 };
-export default Departmentdetail;
+export default StaffInDept;
