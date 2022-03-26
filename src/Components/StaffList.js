@@ -132,7 +132,7 @@ import { FadeTransform } from "react-animation-components";
                 doB: this.state.doB,
                 salaryScale: parseInt(value.salaryScale, 10),
                 startDate: this.state.startDate,
-                image: "/asset/images/alberto.png",
+                image: "/assets/images/alberto.png",
                 departmentId: this.state.departmentId,
                 annualLeave: parseInt(value.annualLeave, 10),
                 overTime: parseInt(value.overTime, 10),

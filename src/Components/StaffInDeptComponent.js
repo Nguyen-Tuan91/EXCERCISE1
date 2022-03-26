@@ -1,12 +1,5 @@
 import React from "react";
-import {
-  Card,
-  CardImg,
-  CardBody,
-  CardSubtitle,
-  Breadcrumb,
-  BreadcrumbItem,
-} from "reactstrap";
+import { Card, CardImg, CardBody, CardSubtitle, Breadcrumb, BreadcrumbItem} from "reactstrap";
 import { Link } from "react-router-dom";
 import { FadeTransform } from "react-animation-components";
 
@@ -30,7 +23,7 @@ const RenderStaffItem = ({ staff }) => {
   );
 };
 
-const DepartmentDetail = (props) => {
+const StaffInDept = (props) => {
   const staffs = props.staff.map((val) => (
     <div className="col-6 col-md-4 col-lg-2 mt-3 mb-3" key={val.id}>
       <RenderStaffItem staff={val} />
@@ -60,4 +53,4 @@ const DepartmentDetail = (props) => {
   }
 };
 
-export default DepartmentDetail;
+export default StaffInDept;
