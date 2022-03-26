@@ -115,17 +115,11 @@ import { FadeTransform } from "react-animation-components";
         constructor(props) {
             super(props);
             this.state={
-                id:'',
-                name:'',
-                doB:'',
-                salaryScale:1,
-                startDate:'',
-                departmentId:'Dept01',
-                annualLeave:0,
-                overTime:0,
-                salary:'',
-                image:'/assets/images/pizzaro.png',
-                isModalOpen:false
+                isModalOpen: false,
+                doB: "",
+                startDate: "",
+                departmentId: "Dept01",
+                image: "/asset/images/alberto.png",
             };
             /*Ràng buộc 2 chiều đối với các hàm dưới đây */
             this.toggleModal=this.toggleModal.bind(this);
