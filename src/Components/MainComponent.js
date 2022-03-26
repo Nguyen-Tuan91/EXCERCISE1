@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import StaffDetail from "./StaffdetailComponent";
-import StaffInDept from "./DepartmentdetailComponent";
+import Departmentdetail from "./DepartmentdetailComponent";
 import Header from "./HeaderComponent";
 import Footer from "./FooterComponent";
 import StaffList from "./StaffListComponent";
@@ -20,7 +20,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  addStaff: (staff) => {dispatch(postStaff(staff));},
+  postStaff: (staff) => {dispatch(postStaff(staff));},
   fetchStaffs: () => {dispatch(fetchStaffs());},
   fetchDepartments: () => {dispatch(fetchDepartments());},
   fetchStaffsSalary: () => {dispatch(fetchStaffsSalary());},
@@ -51,7 +51,7 @@ class Main extends Component {
     };
     const StaffWithDept = ({ match }) => {
       return (
-        <StaffInDept
+        <Departmentdetail
           dept={this.props.departments.departments.filter((dept) => dept.id === match.params.deptId)[0]}
           staff={this.props.staffs.staffs.filter((staff) => staff.departmentId === match.params.deptId
           )}
