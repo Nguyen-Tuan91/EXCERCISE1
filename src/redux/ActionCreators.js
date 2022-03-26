@@ -2,12 +2,12 @@ import * as ActionTypes from "./ActionTypes";
 import { baseUrl } from "../shared/baseUrl";
 
 // ADD STAFF
-export const addStaff = (staff) => ({
-  type: ActionTypes.ADD_STAFF,
+export const addStaffSuccess = (staff) => ({
+  type: ActionTypes.ADD_STAFF_SUCCESS,
   payload: staff,
 });
 
-export const postStaff = (staff) => (dispatch) => {
+export const addStaff = (staff) => (dispatch) => {
   return fetch(baseUrl + "staffs", {
     method: "POST",
     body: JSON.stringify(staff),
@@ -33,7 +33,7 @@ export const postStaff = (staff) => (dispatch) => {
       }
     )
     .then((response) => response.json())
-    .then((response) => dispatch(addStaff(response)))
+    .then((response) => dispatch(addStaffSuccess(response)))
     .catch((error) => {
       console.log("Post staffs", error.message);
       alert("Your staff could not be posted\nError: " + error.message);
@@ -101,17 +101,17 @@ export const fetchStaffs = () => (dispatch) => {
   dispatch(staffsLoading(true));
   return fetch(baseUrl + "staffs")
     .then((response) => response.json())
-    .then((staffs) => dispatch(addStaffs(staffs)))
-    .catch((error) => dispatch(staffsFailed(error.message)));
+    .then((staffs) => dispatch(fetchStaffsSuccess(staffs)))
+    .catch((error) => dispatch(fetchStaffsFailed(error.message)));
 };
 
-export const staffsFailed = (errmess) => ({
-  type: ActionTypes.STAFFS_FAILED,
+export const fetchStaffsFailed = (errmess) => ({
+  type: ActionTypes.FETCH_STAFFS_FAILED,
   payload: errmess,
 });
 
-export const addStaffs = (staffs) => ({
-  type: ActionTypes.ADD_STAFFS,
+export const fetchStaffsSuccess = (staffs) => ({
+  type: ActionTypes.FETCH_STAFFS_SUCESS,
   payload: staffs,
 });
 
@@ -197,4 +197,3 @@ export const addStaffsSalary = (staffsSalary) => ({
   type: ActionTypes.ADD_STAFFSSALARY,
   payload: staffsSalary,
 });
-

@@ -6,20 +6,35 @@ export const Staffs = (
     errMess: null,
     staffs: [],
   },
-  action) => {
+  action
+) => {
   switch (action.type) {
     //FETCH
     case ActionTypes.STAFFS_LOADING:
-      return { ...state, isLoading: true, errMess:null, staffs:[], };
-    case ActionTypes.ADD_STAFFS:
-      return {...state, isLoading: false, errMess:null, staffs: action.payload,};
-    case ActionTypes.STAFFS_FAILED:
-      return {...state,isLoading: false, errMess: action.payload, staffs:[],};
+      return { ...state, isLoading: true };
 
-    //POST STAFF
-    case ActionTypes.ADD_STAFF:
-      return {...state,isLoading: false,staffs: action.payload,};
-      
+    case ActionTypes.FETCH_STAFFS_SUCESS:
+      return {
+        ...state,
+        isLoading: false,
+        staffs: action.payload,
+      };
+
+    case ActionTypes.FETCH_STAFFS_FAILED:
+      return {
+        ...state,
+        isLoading: false,
+        errMess: action.payload,
+      };
+
+    //ADD STAFF
+    case ActionTypes.ADD_STAFF_SUCCESS:
+      return {
+        ...state,
+        isLoading: false,
+        staffs: action.payload,
+      };
+
     //DELETE
     case ActionTypes.DELETE_STAFF_LOADING:
       return { ...state, isLoading: true, errMess: null, staffs: [] };

@@ -1,22 +1,24 @@
-import React from 'react';
-import Main from './Components/MainComponent';
-import { BrowserRouter } from 'react-router-dom';
-import './App.css'
-import { ConfigureStore } from './redux/configureStore';
-import { Provider } from 'react-redux';
+import React, { Component } from "react";
+import "./App.css";
+import Main from "./components/MainComponent";
+import { BrowserRouter } from "react-router-dom";
+import { Provider } from "react-redux";
+import { ConfigureStore } from "./redux/configureStore";
 
-const store=ConfigureStore();
+const store = ConfigureStore();
 
-function App() {
-  return (
-    <Provider store={store}>
-      <BrowserRouter>
-      <div>
-        <Main />
-      </div>
-    </BrowserRouter>
-    </Provider>
-  );
+class App extends Component {
+  render() {
+    return (
+      <Provider store={store}>
+        <BrowserRouter>
+          <div>
+            <Main />
+          </div>
+        </BrowserRouter>
+      </Provider>
+    );
+  }
 }
 
 export default App;

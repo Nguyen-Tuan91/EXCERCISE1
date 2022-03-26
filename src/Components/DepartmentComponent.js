@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { FadeTransform } from "react-animation-components";
 
 // Presentational Component
-class RenderDepartment extends Component {
+class RenderDept extends Component {
   render() {
     return (
       <FadeTransform
@@ -32,13 +32,14 @@ class RenderDepartment extends Component {
 class Department extends Component {
   render() {
     //Dung map() de fetch toan bo data tu props cua MainComponent
-    console.log(this.props.departments);
     const departments = this.props.departments.map((department) => {
       return (
         <div className="col-12 col-md-6 col-lg-4 mt-2 mb-2" key={department.id}>
-          <RenderDepartment
+          <RenderDept
             dept={department}
-            staffNo={this.props.staffs.filter((staff) => staff.departmentId === department.id)}
+            staffNo={this.props.staffs.filter(
+              (staff) => staff.departmentId === department.id
+            )}
           />
         </div>
       );
